@@ -1,21 +1,24 @@
 
 import nodemailer from "nodemailer";
 
-export const transporter = nodemailer.createTransport({
+const transporter = nodemailer.createTransport({
   service: 'gmail',
   host: "smtp.gmail.com",
-  port: 587,
-  secure: false, // Use `true` for port 465, `false` for all other ports
+  port: 465,
+  secure: true, // Use `true` for port 465, `false` for all other ports
   auth: {
     user: process.env.USER_EMAIL,
     pass: process.env.PASS_PASS,
+  },
+  tls: {
+    rejectUnauthorized: false, 
   },
 });
 
 
 transporter.verify().then(()=>{ 
     console.log("Listo para envio de correo");
-}).catch((error)=> {console.log("error en envio")}
+}).catch((error)=> {console.log("error en envi",error)}
 );
 
 

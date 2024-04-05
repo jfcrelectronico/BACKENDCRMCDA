@@ -16,7 +16,7 @@ export const crearcliente = async (req: Request, resp: Response)=>{
         const clienteNuevo = new ClienteModel(body);
         //se usa el metodo save para guardar el registro en la base
         const clienteCreado = await clienteNuevo.save();
-        sendEmail("noyikic666@acentni.com","preuba","<h1>correo prueba</h1>");
+        //sendEmail("noyikic666@acentni.com","preuba","<h1>correo prueba</h1>");
         resp.status(200).json({
         ok: true,
         msg: "Cliente registrado",
